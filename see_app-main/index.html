@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>See App - Parent Dashboard Preview</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3f51b5;
+            --secondary-color: #673ab7;
+            --joy-color: #26a69a;
+            --calm-color: #7986cb;
+            --text-primary: #212121;
+            --text-secondary: #757575;
+            --background: #fafafa;
+            --card-background: #ffffff;
+            --radius-small: 8px;
+            --radius-medium: 12px;
+            --radius-large: 16px;
+            --spacing-4: 4px;
+            --spacing-8: 8px;
+            --spacing-12: 12px;
+            --spacing-16: 16px;
+            --spacing-24: 24px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background);
+            color: var(--text-primary);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+        
+        .header p {
+            color: var(--text-secondary);
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-label {
+            margin-bottom: 16px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+        }
+        
+        /* Community Section Styles */
+        .community-section {
+            background: white;
+            border-radius: var(--radius-large);
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .community-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+        }
+        
+        .community-title {
+            display: flex;
+            align-items: center;
+        }
+        
+        .community-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .community-icon-inner {
+            color: white;
+            font-size: 20px;
+        }
+        
+        .community-button {
+            background-color: rgba(63, 81, 181, 0.1);
+            color: var(--primary-color);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        
+        .community-button-icon {
+            font-size: 16px;
+            margin-right: 6px;
+        }
+        
+        .community-stats {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .stats-label {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .stats-icon {
+            margin-right: 8px;
+            font-size: 16px;
+        }
+        
+        .stats-count {
+            margin-left: auto;
+            background-color: rgba(63, 81, 181, 0.1);
+            color: var(--primary-color);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .community-post {
+            padding: 16px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .post-author {
+            display: flex;
+            margin-bottom: 12px;
+        }
+        
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 12px;
+            background-size: cover;
+        }
+        
+        .author-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .author-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .post-time {
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+        
+        .post-content {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+        
+        .post-actions {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .action-button {
+            display: flex;
+            align-items: center;
+            color: var(--text-secondary);
+            font-size: 12px;
+            cursor: pointer;
+        }
+        
+        .action-icon {
+            margin-right: 4px;
+            font-size: 16px;
+        }
+        
+        .create-post {
+            padding: 12px;
+            background-color: rgba(63, 81, 181, 0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .create-post-button {
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .create-post-icon {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        
+        /* Connect & Reflect Styles */
+        .connect-section {
+            background: white;
+            border-radius: var(--radius-large);
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .connect-header {
+            display: flex;
+            padding: 16px;
+        }
+        
+        .connect-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--joy-color), var(--primary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .connect-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .connect-title {
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+        }
+        
+        .connect-subtitle {
+            color: var(--text-secondary);
+            font-size: 12px;
+            margin-top: 4px;
+        }
+        
+        .mission-card {
+            margin: 16px;
+            padding: 16px;
+            background: white;
+            border-radius: var(--radius-medium);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mission-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(38, 166, 154, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+        
+        .mission-title {
+            text-align: center;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .mission-description {
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+        
+        .mission-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: var(--joy-color);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: 500;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .material-icons {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>See App</h1>
+            <p>Parent Dashboard Improvements Preview</p>
+        </div>
+        
+        <!-- Parent Community Section -->
+        <div class="section">
+            <h2 class="section-label">Parent Community</h2>
+            <div class="community-section">
+                <div class="community-header">
+                    <div class="community-title">
+                        <div class="community-icon">
+                            <span class="material-icons community-icon-inner">diversity_3</span>
+                        </div>
+                        <div>
+                            <h3>Parent Community</h3>
+                        </div>
+                    </div>
+                    <button class="community-button">
+                        <span class="material-icons community-button-icon">group</span>
+                        Join Community
+                    </button>
+                </div>
+                
+                <div class="community-stats">
+                    <div class="stats-label">
+                        <span class="material-icons stats-icon">chat_bubble_outline</span>
+                        Recent Discussions
+                    </div>
+                    <div class="stats-count">3 posts</div>
+                </div>
+                
+                <div class="community-post">
+                    <div class="post-author">
+                        <div class="author-avatar" style="background-image: url('https://randomuser.me/api/portraits/women/33.jpg');"></div>
+                        <div class="author-info">
+                            <div class="author-name">Emily B.</div>
+                            <div class="post-time">2h ago</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        Found a great visual timer app that helps my 6-year-old understand time better during activities!
+                    </div>
+                    <div class="post-actions">
+                        <div class="action-button">
+                            <span class="material-icons action-icon">favorite_border</span>
+                            14
+                        </div>
+                        <div class="action-button">
+                            <span class="material-icons action-icon">chat_bubble_outline</span>
+                            Reply
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="community-post">
+                    <div class="post-author">
+                        <div class="author-avatar" style="background-image: url('https://randomuser.me/api/portraits/men/41.jpg');"></div>
+                        <div class="author-info">
+                            <div class="author-name">Michael T.</div>
+                            <div class="post-time">5h ago</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        How do you handle sensory overload during family gatherings? My son struggles with the noise levels.
+                    </div>
+                    <div class="post-actions">
+                        <div class="action-button">
+                            <span class="material-icons action-icon">favorite_border</span>
+                            8
+                        </div>
+                        <div class="action-button">
+                            <span class="material-icons action-icon">chat_bubble_outline</span>
+                            Reply
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="community-post">
+                    <div class="post-author">
+                        <div class="author-avatar" style="background-image: url('https://randomuser.me/api/portraits/women/23.jpg');"></div>
+                        <div class="author-info">
+                            <div class="author-name">Sarah K.</div>
+                            <div class="post-time">1d ago</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        Just completed the emotional regulation mission! The breathing exercise cards were a huge hit with my daughter.
+                    </div>
+                    <div class="post-actions">
+                        <div class="action-button">
+                            <span class="material-icons action-icon">favorite_border</span>
+                            22
+                        </div>
+                        <div class="action-button">
+                            <span class="material-icons action-icon">chat_bubble_outline</span>
+                            Reply
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="create-post">
+                    <div class="create-post-button">
+                        <span class="material-icons create-post-icon">add_circle_outline</span>
+                        Share Your Experience
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Connect & Reflect Section -->
+        <div class="section">
+            <h2 class="section-label">Connect & Reflect</h2>
+            <div class="connect-section">
+                <div class="connect-header">
+                    <div class="connect-icon">
+                        <span class="material-icons" style="color: white;">family_restroom</span>
+                    </div>
+                    <div class="connect-info">
+                        <div class="connect-title">Connect & Reflect</div>
+                        <div class="connect-subtitle">Today's connection activity</div>
+                    </div>
+                </div>
+                
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <span class="material-icons" style="color: var(--joy-color); font-size: 30px;">lightbulb_outline</span>
+                    </div>
+                    <div class="mission-title">Strengthen Your Connection</div>
+                    <div class="mission-description">
+                        Create a "feelings chart" together with your child. Use drawings or cut out pictures from magazines that represent different emotions. Talk about when your child might feel each emotion.
+                    </div>
+                    <button class="mission-button">Start Activity</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

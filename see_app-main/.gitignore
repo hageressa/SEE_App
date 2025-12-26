@@ -1,0 +1,109 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+
+# Node
+node_modules/
+package-lock.json
+yarn.lock
+npm-debug.log*
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# VS Code
+.vscode/
+
+# Others
+*.sublime-workspace
+*.sublime-project
+*.code-workspace
+
+# Sensitive files
+keystore/
+local.properties
+
+# Ignore legacy, diagrams, screenshots, and reports moved to docs
+ALL_FIGURES_REDRAWN.md
+ARCHITECTURE.md
+FIREBASE_RULES_SETUP.md
+FIREBASE_SETUP.md
+IMPORTANT_SECURITY_NOTE.md
+PROJECT_DIAGRAMS.md
+PROJECT_DIAGRAMS_COMPATIBLE.md
+PROJECT_REPORT.md
+RELEASE.md
+THERAPIST_INTERFACE_PLAN.md
+parent_dashboard_patch.txt
+project_report.*
+see_app.iml
+*.aux
+*.log
+*.out
+*.toc
+*.tex
+*.docx
+*.pdf
+Diagrams_Figures/
+redrawn_diagrams/
+missing_diagrams/
+Screenshots/
+svg-inkscape/
+logo/
+
+# Ignore scripts moved to scripts/
+create_response_time_chart.html
+delete_all.js
+delete_all_users.js
+generate_diagrams.html
+generate_response_time_graph.dart
+install_flutter.bat
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release

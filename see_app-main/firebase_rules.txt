@@ -1,0 +1,40 @@
+// Firebase Firestore Rules
+// Copy these to your Firebase Console (https://console.firebase.google.com)
+// Navigate to Firestore Database > Rules and paste these rules
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow users to read and write their own user profile
+    match /users/{userId} {
+      allow read, write: if request.auth != null && (request.auth.uid == userId || get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'therapist');
+      
+      // Allow child linking
+      match /childrenIds/{childId} {
+        allow read, write: if request.auth != null && (
+          request.auth.uid == userId || 
+          get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'therapist'
+        );
+      }
+    }
+    
+    // Children collection
+    match /children/{childId} {
+      allow read, write: if request.auth != null && (
+        (resource == null && true) || // Allow creation of new children
+        resource.data.additionalInfo.parentId == request.auth.uid || // Parent can access their children
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'therapist' // Therapists can access all children
+      );
+    }
+    
+    // Emotions collection
+    match /emotions/{emotionId} {
+      allow read, write: if request.auth != null;
+    }
+    
+    // Allow authenticated users to read/write all other collections
+    match /{collection}/{document=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}

@@ -1,0 +1,96 @@
+name: see_app
+description: A new Flutter project.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+  
+  # Firebase
+  firebase_core: ^3.14.0
+  firebase_auth: ^5.6.0
+  cloud_firestore: ^5.6.9
+  firebase_storage: ^12.4.7
+  
+  # State Management
+  provider: ^6.1.2
+  rxdart: ^0.28.0
+
+  # UI & UX
+  flutter_animate: ^4.5.0
+  lottie: ^3.1.0
+  google_fonts: ^6.2.1
+  fl_chart: ^1.0.0
+  badges: ^3.1.2
+  confetti: ^0.8.0
+  animated_text_kit: ^4.2.2
+
+  # Utilities
+  shared_preferences: ^2.2.2
+  image_picker: ^1.0.8
+  path_provider: ^2.1.3
+  permission_handler: ^12.0.0+1
+  uuid: ^4.4.0
+  connectivity_plus: ^6.1.4
+  
+  # Other
+  speech_to_text: ^7.0.0
+  flutter_tts: ^4.2.3
+  google_generative_ai: ^0.4.7
+  timeago: ^3.6.0
+  
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/images/avatars/
+    - assets/images/suggestions/
+    - assets/lottie/
+    - assets/fonts/
+  fonts:
+    - family: ComicNeue
+      fonts:
+        - asset: assets/fonts/ComicNeue-Regular.ttf
+        - asset: assets/fonts/ComicNeue-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/ComicNeue-Italic.ttf
+          style: italic
+        - asset: assets/fonts/ComicNeue-Light.ttf
+          weight: 300
+    - family: Marhey
+      fonts:
+        - asset: assets/fonts/Marhey-VariableFont_wght.ttf
+    - family: Nunito
+      fonts:
+        - asset: assets/fonts/Nunito-Regular.ttf
+        - asset: assets/fonts/Nunito-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Nunito-SemiBold.ttf
+          weight: 600
+    - family: OpenSans
+      fonts:
+        - asset: assets/fonts/OpenSans-Regular.ttf
+        - asset: assets/fonts/OpenSans-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/OpenSans-SemiBold.ttf
+          weight: 600
+    - family: Rubik
+      fonts:
+        - asset: assets/fonts/Rubik-VariableFont_wght.ttf
+        - asset: assets/fonts/Rubik-Italic-VariableFont_wght.ttf
+          style: italic
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
